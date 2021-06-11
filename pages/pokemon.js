@@ -35,12 +35,14 @@ export async function getServerSideProps({ query }) {
         const pokeman = await res.json()
         const paddedId = ('00' + id).slice(-3)
         pokeman.image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${paddedId}.png`
+        console.log('success')
+
         return {
-            props: {
-                pokeman
-            },
+            props: { pokeman },
         }
     } catch (err) {
-        console.error(err)
+        return {
+            props: {}
+        }
     }
 }
